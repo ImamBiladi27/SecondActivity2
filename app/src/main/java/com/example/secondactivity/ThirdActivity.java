@@ -42,6 +42,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
             case R.id.btnDial:
                 Intent i = new Intent();
+
                 i.setAction(Intent.ACTION_DIAL);
                 i.setData(Uri.parse("tel:" + etNo.getText()));
                 startActivity(i);

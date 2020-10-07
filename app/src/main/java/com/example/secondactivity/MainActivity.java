@@ -2,6 +2,7 @@ package com.example.secondactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,33 +11,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 EditText edNama, edInstitusi;
-    Button btnPindahTanpaData, btnPindahData;
+Button btnPindahTanpaData, btnPindahData;
 
-
-
-public static final String EXTRA_NAMA = "extra_age";
-public static final String EXTRA_Institusi = "extra_age";
+public static final String EXTRA_NAMA = "EXTRA_NAMA";
+public static final String EXTRA_Institusi = "EXTRA_Institusi";
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_main);
 
-       edNama = findViewById(R.id.ed_nama);
-       edInstitusi = findViewById(R.id.ed_institusi);
-    //   btnActivity3 = findViewById(R.id.btn_activity3);
+        edNama = findViewById(R.id.ed_nama);
+        edInstitusi = findViewById(R.id.ed_institusi);
 
-      btnPindahData = findViewById(R.id.btn_pindah_data);
-       btnPindahTanpaData = findViewById(R.id.btn_pindah_tanpa_data);
+        btnPindahData = findViewById(R.id.btn_pindah_data);
+        btnPindahTanpaData = findViewById(R.id.btn_pindah_tanpa_data);
 
-      btnPindahTanpaData.setOnClickListener(this);
+        btnPindahTanpaData.setOnClickListener(this);
         btnPindahData.setOnClickListener(this);
-
    }
 
-   private void pindahActivityTanpaData(){
-       Intent moveIntent = new Intent(MainActivity.this, SecondActivity.class);
-   startActivity(moveIntent);
+    private void pindahActivityTanpaData(){
+//       String url = moveIntent.getExtras().getString("userurl");
+       Intent moveIntent = new Intent(this, SecondActivity.class);
+//       moveIntent.putExtra("EXTRA_NAMA",EXTRA_NAMA);
+//       moveIntent.putExtra("EXTRA_Institusi",EXTRA_Institusi);
+       startActivity(moveIntent);
    }
    private void pindaActivityData(){
        String nama = edNama.getText().toString().trim();
@@ -53,6 +53,7 @@ public static final String EXTRA_Institusi = "extra_age";
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_pindah_data:
+//                Log.d("test","test");
                 pindaActivityData();
                 break;
             case R.id.btn_pindah_tanpa_data:
